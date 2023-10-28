@@ -27,6 +27,13 @@ namespace InvoiceApp
         public string Description { get; set; }
         public DateTime Date { get; set; } = DateTime.Today;
         public decimal Cost { get; set; }
-        public decimal Price => Math.Round(Cost, 2);
+
+        private decimal _price => Cost - _gst;
+        public string Price => _price.ToString("C");
+
+        private decimal _gst => Cost * 0.11m;
+        public string Gst => _gst.ToString("C");
+
+        public string Total => Cost.ToString("C");
     }
 }
