@@ -17,4 +17,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="GemBox.Document" Version="35.0.1538" />
+  </ItemGroup>
+
 </Project>

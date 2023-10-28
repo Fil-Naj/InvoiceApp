@@ -5,26 +5,42 @@ namespace InvoiceApp
 {
     public class MainWindowViewModel : ViewModel
     {
+        private DocumentService _documentService;
         public InvoiceModel Invoice { get; set; }
+
+        private bool _hasError;
+        public bool HasError 
+        { 
+            get
+            {
+                return _hasError;
+            } 
+            set
+            {
+                _hasError = value;
+                OnPropertyChanged(nameof(HasError));
+            } 
+        }
 
         public ICommand GenerateDocumentCommand { get; }
 
         public MainWindowViewModel()
         {
+            _documentService = new DocumentService();
             Invoice = new InvoiceModel();
             GenerateDocumentCommand = new RelayCommand(GenerateDocument);
         }
 
         public void GenerateDocument()
         {
-            Console.WriteLine(Invoice.Name);
+            HasError = !_documentService.TryGenerateInvoice(Invoice);
         }
     }
 
     public class InvoiceModel
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime Date { get; set; } = DateTime.Today;
         public decimal Cost { get; set; }
 

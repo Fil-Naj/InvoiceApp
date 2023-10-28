@@ -19,6 +19,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="DarkMode.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </Window.Resources>
 
@@ -38,7 +39,10 @@
                 
                 <!--Description-->
                 <Label Content="Description:"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Width="400" Text="{Binding Invoice.Description}" Height="150"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Width="400" Height="150"
+                           Text="{Binding Invoice.Description}" 
+                           TextWrapping="Wrap" 
+                         AcceptsReturn="True"/>
                 
                 <!--Date-->
                 <Label Content="Date:"/>
@@ -63,5 +67,14 @@
         Height="40"
         VerticalAlignment="Center"
         HorizontalAlignment="Center"/>
+        
+        <TextBlock Grid.Row="2"
+                   Width="50"
+                   Height="18"
+                   Background="Red"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="20"
+                   Text="ERROR" Visibility="{Binding HasError, Converter={StaticResource BooleanToVisibilityConverter}}"/>
     </Grid>
 </Window>
