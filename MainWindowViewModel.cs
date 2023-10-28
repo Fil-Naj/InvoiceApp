@@ -15,7 +15,7 @@ namespace InvoiceApp
             GenerateDocumentCommand = new RelayCommand(GenerateDocument);
         }
 
-        public void GenerateDocument(object _)
+        public void GenerateDocument()
         {
             Console.WriteLine(Invoice.Name);
         }

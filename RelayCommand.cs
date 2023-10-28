@@ -5,10 +5,10 @@ namespace InvoiceApp
 {
     public class RelayCommand : ICommand
     {
-        private readonly Action<object> _execute;
+        private readonly Action _execute;
         private readonly Predicate<object> _canExecute;
 
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        public RelayCommand(Action execute, Predicate<object> canExecute = null)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
@@ -25,9 +25,9 @@ namespace InvoiceApp
             return _canExecute == null || _canExecute(parameter);
         }
 
-        public void Execute(object? parameter)
+        public void Execute(object? _)
         {
-            _execute(parameter);
+            _execute();
         }
     }
 }
