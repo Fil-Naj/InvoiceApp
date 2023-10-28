@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="#1C1C1C" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="#333333" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="#555555" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style TargetType="DatePicker">
+        <Style.Resources>
+            <Style TargetType="DatePickerTextBox">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="Background" Value="#333333" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+
+    <!-- Add more styles for other controls as needed -->
+
+</ResourceDictionary>
